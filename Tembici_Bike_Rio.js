@@ -25,7 +25,7 @@ esl_server.on('connection::ready', function(conn, id) {
         })
     }else{*/
         conn.execute('answer', cb => {
-            espera.push([id, conn])
+            espera.push(conn)
             conn.execute('valet_park', 'valet_lot $1', cb => {})
         })
     //}
@@ -46,8 +46,7 @@ esl_server.on('connection::close', (conn, id) => {
 
 setInterval(() => {
     if(espera.length > 0){
-        let [id, atual] = espera.shift()
-        //ativa.push([id, atual])
+        let atual = espera.shift()
         
         atual.execute('set', 'effective_caller_id_name=${caller_id_number}Bike_Rio',  cb => {
             atual.execute('set', 'effective_caller_id_number=${caller_id_number}Bike_Rio', cb => {
@@ -64,5 +63,4 @@ setInterval(() => {
 
 setInterval(() => {
     console.log(`Espera: ${espera.length}`)
-    //console.log(`Ativa: ${ativa.length}`)
 }, 5000)
