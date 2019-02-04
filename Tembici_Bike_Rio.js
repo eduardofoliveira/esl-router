@@ -8,21 +8,17 @@ let tempo = 15000
 const lista = []
 
 esl_server.on('connection::ready', function(conn, id) {
-    console.log('Pronta para manipulação' + conn.channelData.headers.find(item => {
-        if(item.name === 'Channel-Call-UUID'){
-            return item.value
-        }
-    }))
+    console.log('Pronta para manipulação' + id)
     
     conn.execute('answer', function(cb) {
         conn.execute('playback', 'local_stream://moh', cb => {})
-        lista.push(conn)
+        lista.push([conn, id])
     })
 })
 
 setInterval(() => {
     if(lista.length > 0){
-        let conn = lista.shift()
+        let [conn, id] = lista.shift()
 
         conn.execute('set', 'effective_caller_id_name=${caller_id_number}Bike_Rio',  function(cb) {
             conn.execute('set', 'effective_caller_id_number=${caller_id_number}Bike_Rio', function(cb) {
@@ -37,17 +33,15 @@ setInterval(() => {
 }, tempo)
 
 esl_server.on('connection::open', (conn, id) => {
-    console.log('Chegou para manipulação' + conn.channelData.headers.find(item => {
-        if(item.name === 'Channel-Call-UUID'){
-            return item.value
-        }
-    }))
+    console.log('Chegou para manipulação' + id)
 })
 
 esl_server.on('connection::close', (conn, id) => {
-    console.log('Desligada para manipulação' + conn.channelData.headers.find(item => {
-        if(item.name === 'Channel-Call-UUID'){
-            return item.value
+    console.log('Desligada para manipulação' + id)
+
+    for (let index = 0; index < lista.length; index++) {
+        if(lista[index][1] === id){
+            lista.splice(index, 1)
         }
-    }))
+    }
 })
