@@ -7,9 +7,18 @@ var esl_server = new esl.Server({host: '0.0.0.0', port: 8086, myevents:true}, fu
 let tempo = 15000
 const lista = []
 
+getHeader = (lista, item) => {
+  for (let index = 0; index < lista.length; index++) {
+    if(lista[index].name === item){
+      return lista[index].value
+    }
+  }
+}
+
 esl_server.on('connection::ready', function(conn, id) {
     console.log('Pronta para manipulação' + id)
-    console.log(conn.channelData.headers)
+    let headers = conn.channelData.headers
+    console.log(getHeader(headers, 'Channel-Destination-Number'))
 
     conn.execute('hangup', function(cb) {})
     
