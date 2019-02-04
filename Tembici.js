@@ -64,7 +64,7 @@ esl_server.on('connection::ready', function(conn, id) {
     }
     
     conn.execute('answer', function(cb) {
-        conn.execute('playback', 'local_stream://moh', cb => {})
+        conn.execute('playback', 'local_stream://default', cb => {})
         lista.push([conn, id, from, to])
     })
 })
