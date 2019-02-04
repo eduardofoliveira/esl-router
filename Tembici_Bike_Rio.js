@@ -26,6 +26,7 @@ esl_server.on('connection::ready', function(conn, id) {
                 })
             })
         }, tempo)
+        console.log('Tempo de espera da chamada: ' + tempo)
     })
 })
 
