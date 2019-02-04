@@ -5,15 +5,16 @@ var esl_server = new esl.Server({host: '0.0.0.0', port: 8085, myevents:true}, fu
 })
 
 let tempo = 20000
-let park = 1
+//let park = 8000
 
 esl_server.on('connection::ready', function(conn, id) {
     console.log('Chamada com ID: ' + id + ' pronta para manipulação')
     //console.log(conn.channelData.headers)
     
     conn.execute('answer', function(cb) {
-        conn.execute('valet_park', `valet_lot ${park}`, cb => {
-            park = park + 1
+        //conn.execute('valet_park', `valet_lot ${park}`, cb => {
+            //park = park + 1
+        conn.execute('park', cb => {
 
             setTimeout(() => {
                 conn.execute('set', 'effective_caller_id_name=${caller_id_number}Bike_Rio',  function(cb) {
