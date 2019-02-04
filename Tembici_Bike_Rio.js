@@ -4,16 +4,16 @@ var esl_server = new esl.Server({host: '0.0.0.0', port: 8085, myevents:true}, fu
     console.log("Gerenciador de fila iniciado")
 })
 
-let tempo = 30000
+let tempo = 15000
 const lista = []
 
 esl_server.on('connection::ready', function(conn, id) {
     console.log('Chamada com ID: ' + id + ' pronta para manipulação')
-    //console.log(conn.channelData.headers)
     
     conn.execute('answer', function(cb) {
         conn.execute('playback', 'local_stream://moh', cb => {})
         lista.push(conn)
+        console.log(conn.channelData.headers)
     })
 })
 
