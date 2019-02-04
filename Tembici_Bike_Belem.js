@@ -9,7 +9,7 @@ const lista = []
 
 esl_server.on('connection::ready', function(conn, id) {
     console.log('Pronta para manipulação' + id)
-    console.log(conn)
+    console.log(conn.channelData.headers)
 
     conn.execute('hangup', function(cb) {})
     
