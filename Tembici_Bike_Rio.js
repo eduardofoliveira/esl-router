@@ -8,7 +8,11 @@ let tempo = 15000
 const lista = []
 
 esl_server.on('connection::ready', function(conn, id) {
-    console.log('Pronta para manipulação' + conn.channelData.headers.getHeader('Channel-Call-UUID'))
+    console.log('Pronta para manipulação' + conn.channelData.headers.find(item => {
+        if(item.name === 'Channel-Call-UUID'){
+            return item.value
+        }
+    }))
     
     conn.execute('answer', function(cb) {
         conn.execute('playback', 'local_stream://moh', cb => {})
@@ -33,9 +37,17 @@ setInterval(() => {
 }, tempo)
 
 esl_server.on('connection::open', (conn, id) => {
-    console.log('Chegou para manipulação' + conn.channelData.headers.getHeader('Channel-Call-UUID'))
+    console.log('Chegou para manipulação' + conn.channelData.headers.find(item => {
+        if(item.name === 'Channel-Call-UUID'){
+            return item.value
+        }
+    }))
 })
 
 esl_server.on('connection::close', (conn, id) => {
-    console.log('Desligada para manipulação' + conn.channelData.headers.getHeader('Channel-Call-UUID'))
+    console.log('Desligada para manipulação' + conn.channelData.headers.find(item => {
+        if(item.name === 'Channel-Call-UUID'){
+            return item.value
+        }
+    }))
 })
