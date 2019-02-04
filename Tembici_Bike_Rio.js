@@ -13,7 +13,7 @@ esl_server.on('connection::ready', function(conn, id) {
     conn.execute('answer', function(cb) {
         conn.execute('playback', 'local_stream://moh', cb => {})
         lista.push(conn)
-        console.log(conn.channelData.headers)
+        console.log(conn.channelData.headers.getHeader('Channel-Call-UUID'))
     })
 })
 
