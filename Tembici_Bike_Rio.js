@@ -5,6 +5,7 @@ var esl_server = new esl.Server({host: '0.0.0.0', port: 8085, myevents:true}, fu
 })
 
 let tempo = 0
+let park = 1
 
 esl_server.on('connection::ready', function(conn, id) {
     tempo = tempo + 20000
@@ -12,7 +13,9 @@ esl_server.on('connection::ready', function(conn, id) {
     //console.log(conn.channelData.headers)
     
     conn.execute('answer', cb => {
-        conn.execute('valet_park', 'valet_lot $1', cb => {})
+        conn.execute('valet_park', `valet_lot ${park}`, cb => {
+            park = park + 1
+        })
         
         setInterval(() => {
             conn.execute('set', 'effective_caller_id_name=${caller_id_number}Bike_Rio',  cb => {
