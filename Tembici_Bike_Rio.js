@@ -5,13 +5,13 @@ var esl_server = new esl.Server({host: '0.0.0.0', port: 8085, myevents:true}, fu
 })
 
 const espera = []
-const ativa = []
+//const ativa = []
 
 esl_server.on('connection::ready', function(conn, id) {
     //console.log(conn.channelData.headers)
     console.log('Chamada com ID: ' + id + ' pronta para manipulação')
 
-    if(ativa.length < 5){
+    /*if(ativa.length < 5){
         ativa.push([id, conn])
 
         conn.execute('set', 'effective_caller_id_name=${caller_id_number}Bike_Rio',  cb => {
@@ -23,12 +23,12 @@ esl_server.on('connection::ready', function(conn, id) {
                 })
             })
         })
-    }else{
+    }else{*/
         conn.execute('answer', cb => {
             espera.push([id, conn])
             conn.execute('valet_park', 'valet_lot $1', cb => {})
         })
-    }
+    //}
 })
 
 esl_server.on('connection::open', (conn, id) => {
@@ -47,7 +47,7 @@ esl_server.on('connection::close', (conn, id) => {
 setInterval(() => {
     if(espera.length > 0){
         let [id, atual] = espera.shift()
-        ativa.push([id, atual])
+        //ativa.push([id, atual])
         
         atual.execute('set', 'effective_caller_id_name=${caller_id_number}Bike_Rio',  cb => {
             atual.execute('set', 'effective_caller_id_number=${caller_id_number}Bike_Rio', cb => {
@@ -64,5 +64,5 @@ setInterval(() => {
 
 setInterval(() => {
     console.log(`Espera: ${espera.length}`)
-    console.log(`Ativa: ${ativa.length}`)
+    //console.log(`Ativa: ${ativa.length}`)
 }, 5000)
