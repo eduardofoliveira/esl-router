@@ -14,7 +14,8 @@ esl_server.on('connection::ready', function(conn, id) {
     conn.execute('answer', function(cb) {
         //conn.execute('valet_park', `valet_lot ${park}`, cb => {
             //park = park + 1
-        conn.execute('park', cb => {
+        conn.execute('playback', 'local_stream://moh', cb => {
+            console.log('cb do playback')
 
             setTimeout(() => {
                 conn.execute('set', 'effective_caller_id_name=${caller_id_number}Bike_Rio',  function(cb) {
