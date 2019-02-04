@@ -39,7 +39,7 @@ esl_server.on('connection::close', (conn, id) => {
     console.log('Chamada com ID: ' + id + ' encerrada')
     /*ativa.find((element, index) => {
         if(element[0] === id){
-            ativa.splice(index)
+            ativa.splice(index)s
         }
     })*/
 })
