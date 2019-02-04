@@ -74,7 +74,7 @@ setInterval(() => {
         let [conn, id, from, to] = lista.shift()
 
         conn.execute('set', `effective_caller_id_name=${from}`,  function(cb) {
-            conn.execute('set', `effective_caller_id_number=${from}Bike_Belem`, function(cb) {
+            conn.execute('set', `effective_caller_id_number=${from}`, function(cb) {
                 conn.execute('set', 'bridge_generate_comfort_noise=true', function(cb) {
                     conn.execute('bridge', `sofia/gateway/gateway_cloud/${to}`, function(cb) {
                         conn.execute('hangup', function(cb) {})
