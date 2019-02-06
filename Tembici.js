@@ -36,7 +36,7 @@ esl_server.on('connection::ready', async (conn, id) => {
       from = `${from}Bike_Belem`
       
       conn.execute('answer', function(cb) {
-            conn.execute('playback', '/home/ec2/tembici/IVR_Poa2018.wav', cb => {
+            conn.execute('playback', '/home/ec2/tembici/IVR_4003_sem_auto_atendimento.wav', cb => {
                 
                 console.log(`Quantidade de chamadas: ${lista.length}`)
 
@@ -59,10 +59,52 @@ esl_server.on('connection::ready', async (conn, id) => {
     if(to === '40030387'){
         to = `5511${to}`
         from = `${from}ManoBike`
+
+        conn.execute('answer', function(cb) {
+            conn.execute('playback', '/home/ec2/tembici/IVR_4003_sem_auto_atendimento.wav', cb => {
+                
+                console.log(`Quantidade de chamadas: ${lista.length}`)
+
+                if(lista.length > 18){
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
+                            conn.execute('hangup', function(cb) {})
+                        })
+                    //})
+                }else{
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', 'local_stream://default', cb => {})
+                        lista.push([conn, id, from, to])
+                    //})
+                }
+
+            })
+        })
     }
     if(to === '40030391'){
         to = `5511${to}`
         from = `${from}Danoninho`
+
+        conn.execute('answer', function(cb) {
+            conn.execute('playback', '/home/ec2/tembici/IVR_4003_sem_auto_atendimento.wav', cb => {
+                
+                console.log(`Quantidade de chamadas: ${lista.length}`)
+
+                if(lista.length > 18){
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
+                            conn.execute('hangup', function(cb) {})
+                        })
+                    //})
+                }else{
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', 'local_stream://default', cb => {})
+                        lista.push([conn, id, from, to])
+                    //})
+                }
+
+            })
+        })
     }
     if(to === '40036052'){
         to = `5511${to}`
@@ -117,6 +159,23 @@ esl_server.on('connection::ready', async (conn, id) => {
     if(to === '40036055'){
         to = `5511${to}`
         from = `${from}Bike_Sampa`
+
+        conn.execute('answer', function(cb) {
+                console.log(`Quantidade de chamadas: ${lista.length}`)
+
+                if(lista.length > 18){
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
+                            conn.execute('hangup', function(cb) {})
+                        })
+                    //})
+                }else{
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', 'local_stream://default', cb => {})
+                        lista.push([conn, id, from, to])
+                    //})
+                }
+        })
     }
     if(to === '40036056'){
         to = `5511${to}`
