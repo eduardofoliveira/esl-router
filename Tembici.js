@@ -23,7 +23,7 @@ reproduzirUra = (conn, audio) => {
     })
 }
 
-esl_server.on('connection::ready', async function(conn, id) {
+esl_server.on('connection::ready', async (conn, id) => {
     console.log('Pronta para manipulação' + id)
 
     let headers = conn.channelData.headers
