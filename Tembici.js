@@ -15,7 +15,15 @@ getHeader = (lista, item) => {
   }
 }
 
-esl_server.on('connection::ready', function(conn, id) {
+reproduzirUra = (conn, audio) => {
+    return new Promise((resolve, reject) => {
+        conn.execute('playback', audio, cb => {
+            resolve()
+        })
+    })
+}
+
+esl_server.on('connection::ready', async function(conn, id) {
     console.log('Pronta para manipulação' + id)
 
     let headers = conn.channelData.headers
@@ -37,10 +45,12 @@ esl_server.on('connection::ready', function(conn, id) {
     if(to === '40036052'){
         to = `5511${to}`
         from = `${from}Bike_POA`
+        await reproduzirUra(conn, '/home/ec2/tembici/IVR_Poa2018')
     }
     if(to === '40036054'){
         to = `5511${to}`
         from = `${from}Bike_Rio`
+        await reproduzirUra(conn, '/home/ec2/tembici/IVR_Rio2018')
     }
     if(to === '40036055'){
         to = `5511${to}`
@@ -49,14 +59,17 @@ esl_server.on('connection::ready', function(conn, id) {
     if(to === '40036056'){
         to = `5511${to}`
         from = `${from}Bike_PE`
+        await reproduzirUra(conn, '/home/ec2/tembici/IVR_PE2018')
     }
     if(to === '40039892'){
         to = `5511${to}`
         from = `${from}Bike_Salvador`
+        await reproduzirUra(conn, '/home/ec2/tembici/IVR_Salvador2018')
     }
     if(to === '40036053'){
         to = `5511${to}`
         from = `${from}VilaVelha`
+        await reproduzirUra(conn, '/home/ec2/tembici/IVR_VilaVelha2018')
     }
     if(to === '2420'){
         to = `550300313${to}`
