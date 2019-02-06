@@ -78,7 +78,7 @@ esl_server.on('connection::ready', async function(conn, id) {
 
     console.log(`Quantidade de chamadas: ${lista.length}`)
 
-    if(lista.length > 25){
+    if(lista.length > 18){
         conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados', cb => {
             conn.execute('hangup', function(cb) {})
         })
