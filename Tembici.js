@@ -17,9 +17,8 @@ getHeader = (lista, item) => {
 
 reproduzirUra = (conn, audio) => {
     return new Promise((resolve, reject) => {
-        conn.execute('playback', audio, cb => {
-            resolve()
-        })
+        conn.execute('playback', audio)
+        resolve()
     })
 }
 
