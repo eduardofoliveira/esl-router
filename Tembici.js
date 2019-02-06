@@ -38,6 +38,7 @@ esl_server.on('connection::ready', async (conn, id) => {
         conn.execute('playback', '/home/ec2/tembici/IVR_Rio2018.wav', cb => {
           conn.execute('playback', 'local_stream://default', cb => {})
           lista.push([conn, id, from, to])
+          return
         })
       })
     }
