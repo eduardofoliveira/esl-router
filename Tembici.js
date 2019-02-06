@@ -34,17 +34,27 @@ esl_server.on('connection::ready', async (conn, id) => {
     if(to === '40030374'){
       to = `5511${to}`
       from = `${from}Bike_Belem`
-      console.log('Chamada Bike Belem')
-      conn.execute('answer', function(cb) {})
-        console.log('Chamada Bike Belem Atendeu')
-        conn.execute('playback', '/home/ec2/tembici/IVR_Rio2018.wav', cb => {
-            console.log('Chamada Bike Belem Reproduziu Audio')
-          //conn.execute('playback', 'local_stream://default', cb => {})
-          lista.push([conn, id, from, to])
-          console.log('Adicionou na lista')
-          return
-        })
       
+      conn.execute('answer', function(cb) {
+            conn.execute('playback', '/home/ec2/tembici/IVR_Poa2018.wav', cb => {
+                
+                console.log(`Quantidade de chamadas: ${lista.length}`)
+
+                if(lista.length > 18){
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
+                            conn.execute('hangup', function(cb) {})
+                        })
+                    //})
+                }else{
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', 'local_stream://default', cb => {})
+                        lista.push([conn, id, from, to])
+                    //})
+                }
+
+            })
+        })
     }
     if(to === '40030387'){
         to = `5511${to}`
@@ -57,12 +67,52 @@ esl_server.on('connection::ready', async (conn, id) => {
     if(to === '40036052'){
         to = `5511${to}`
         from = `${from}Bike_POA`
-        //await reproduzirUra(conn, '/home/ec2/tembici/IVR_Poa2018.wav')
+
+        conn.execute('answer', function(cb) {
+            conn.execute('playback', '/home/ec2/tembici/IVR_Poa2018.wav', cb => {
+                
+                console.log(`Quantidade de chamadas: ${lista.length}`)
+
+                if(lista.length > 18){
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
+                            conn.execute('hangup', function(cb) {})
+                        })
+                    //})
+                }else{
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', 'local_stream://default', cb => {})
+                        lista.push([conn, id, from, to])
+                    //})
+                }
+
+            })
+        })
     }
     if(to === '40036054'){
         to = `5511${to}`
         from = `${from}Bike_Rio`
-        //await reproduzirUra(conn, '/home/ec2/tembici/IVR_Rio2018.wav')
+
+        conn.execute('answer', function(cb) {
+            conn.execute('playback', '/home/ec2/tembici/IVR_Rio2018.wav', cb => {
+                
+                console.log(`Quantidade de chamadas: ${lista.length}`)
+
+                if(lista.length > 18){
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
+                            conn.execute('hangup', function(cb) {})
+                        })
+                    //})
+                }else{
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', 'local_stream://default', cb => {})
+                        lista.push([conn, id, from, to])
+                    //})
+                }
+
+            })
+        })
     }
     if(to === '40036055'){
         to = `5511${to}`
@@ -71,35 +121,97 @@ esl_server.on('connection::ready', async (conn, id) => {
     if(to === '40036056'){
         to = `5511${to}`
         from = `${from}Bike_PE`
-        //await reproduzirUra(conn, '/home/ec2/tembici/IVR_PE2018.wav')
+
+        conn.execute('answer', function(cb) {
+            conn.execute('playback', '/home/ec2/tembici/IVR_PE2018.wav', cb => {
+                
+                console.log(`Quantidade de chamadas: ${lista.length}`)
+
+                if(lista.length > 18){
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
+                            conn.execute('hangup', function(cb) {})
+                        })
+                    //})
+                }else{
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', 'local_stream://default', cb => {})
+                        lista.push([conn, id, from, to])
+                    //})
+                }
+
+            })
+        })
     }
     if(to === '40039892'){
         to = `5511${to}`
         from = `${from}Bike_Salvador`
-        //await reproduzirUra(conn, '/home/ec2/tembici/IVR_Salvador2018.wav')
+
+        conn.execute('answer', function(cb) {
+            conn.execute('playback', '/home/ec2/tembici/IVR_Salvador2018.wav', cb => {
+                
+                console.log(`Quantidade de chamadas: ${lista.length}`)
+
+                if(lista.length > 18){
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
+                            conn.execute('hangup', function(cb) {})
+                        })
+                    //})
+                }else{
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', 'local_stream://default', cb => {})
+                        lista.push([conn, id, from, to])
+                    //})
+                }
+
+            })
+        })
     }
     if(to === '40036053'){
         to = `5511${to}`
         from = `${from}VilaVelha`
-        //await reproduzirUra(conn, '/home/ec2/tembici/IVR_VilaVelha2018.wav')
+
+        conn.execute('answer', function(cb) {
+            conn.execute('playback', '/home/ec2/tembici/IVR_VilaVelha2018.wav', cb => {
+                
+                console.log(`Quantidade de chamadas: ${lista.length}`)
+
+                if(lista.length > 18){
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
+                            conn.execute('hangup', function(cb) {})
+                        })
+                    //})
+                }else{
+                    //conn.execute('answer', function(cb) {
+                        conn.execute('playback', 'local_stream://default', cb => {})
+                        lista.push([conn, id, from, to])
+                    //})
+                }
+
+            })
+        })
     }
     if(to === '2420'){
         to = `550300313${to}`
         from = `${from}Tembici`
-    }
 
-    console.log(`Quantidade de chamadas: ${lista.length}`)
+        console.log(`Quantidade de chamadas: ${lista.length}`)
 
-    if(lista.length > 18){
-        //conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
-            conn.execute('hangup', function(cb) {})
-        //})
+        if(lista.length > 18){
+            conn.execute('answer', function(cb) {
+                conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados.wav', cb => {
+                    conn.execute('hangup', function(cb) {})
+                })
+            })
+        }else{
+            conn.execute('answer', function(cb) {
+                conn.execute('playback', 'local_stream://default', cb => {})
+                lista.push([conn, id, from, to])
+            })
+        }
     }
-    
-    conn.execute('answer', function(cb) {
-        conn.execute('playback', 'local_stream://default', cb => {})
-        lista.push([conn, id, from, to])
-    })
 })
 
 setInterval(() => {
