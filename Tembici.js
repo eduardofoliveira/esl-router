@@ -34,10 +34,14 @@ esl_server.on('connection::ready', async (conn, id) => {
     if(to === '40030374'){
       to = `5511${to}`
       from = `${from}Bike_Belem`
+      console.log('Chamada Bike Belem')
       conn.execute('answer', function(cb) {
+        console.log('Chamada Bike Belem Atendeu')
         conn.execute('playback', '/home/ec2/tembici/IVR_Rio2018.wav', cb => {
+            console.log('Chamada Bike Belem Reproduziu Audio')
           //conn.execute('playback', 'local_stream://default', cb => {})
           lista.push([conn, id, from, to])
+          console.log('Adicionou na lista')
           return
         })
       })
