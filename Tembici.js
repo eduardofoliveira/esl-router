@@ -17,8 +17,10 @@ getHeader = (lista, item) => {
 
 reproduzirUra = (conn, audio) => {
     return new Promise((resolve, reject) => {
-        conn.execute('playback', audio)
-        resolve()
+        conn.execute('playback', audio, cb =>{
+            resolve('terminou gravacao')
+        })
+        
     })
 }
 
@@ -49,7 +51,8 @@ esl_server.on('connection::ready', async (conn, id) => {
     if(to === '40036054'){
         to = `5511${to}`
         from = `${from}Bike_Rio`
-        await reproduzirUra(conn, '/home/ec2/tembici/IVR_Rio2018.wav')
+        let resp = await reproduzirUra(conn, '/home/ec2/tembici/IVR_Rio2018.wav')
+        console.log(resp)
     }
     if(to === '40036055'){
         to = `5511${to}`
