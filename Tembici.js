@@ -51,9 +51,7 @@ esl_server.on('connection::ready', async (conn, id) => {
     if(to === '40036054'){
         to = `5511${to}`
         from = `${from}Bike_Rio`
-        conn.execute('answer', function(cb) {
-            await reproduzirUra(conn, '/home/ec2/tembici/IVR_Rio2018.wav')
-        })
+        await reproduzirUra(conn, '/home/ec2/tembici/IVR_Rio2018.wav')
     }
     if(to === '40036055'){
         to = `5511${to}`
