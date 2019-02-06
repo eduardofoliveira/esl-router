@@ -4,7 +4,7 @@ var esl_server = new esl.Server({host: '0.0.0.0', port: 8086, myevents:true}, fu
     console.log("Gerenciador de fila iniciado")
 })
 
-let tempo = 15000
+let tempo = 20000
 const lista = []
 
 getHeader = (lista, item) => {
@@ -62,6 +62,14 @@ esl_server.on('connection::ready', function(conn, id) {
         to = `550300313${to}`
         from = `${from}Tembici`
     }
+
+    console.log(`Quantidade de chamadas: ${lista.length}`)
+
+    if(lista.length > 25){
+        conn.execute('playback', '/home/ec2/tembici/Temibici_Ocupados', cb => {
+            conn.execute('hangup', function(cb) {})
+        })
+    }
     
     conn.execute('answer', function(cb) {
         conn.execute('playback', 'local_stream://default', cb => {})
@@ -86,11 +94,11 @@ setInterval(() => {
 }, tempo)
 
 esl_server.on('connection::open', (conn, id) => {
-    console.log('Chegou para manipulação' + id)
+    console.log('Chamada com ID: ' + id + ' chegou')
 })
 
 esl_server.on('connection::close', (conn, id) => {
-    console.log('Desligada para manipulação' + id)
+    console.log('Chamada com ID: ' + id + ' desligada')
 
     for (let index = 0; index < lista.length; index++) {
         if(lista[index][1] === id){
