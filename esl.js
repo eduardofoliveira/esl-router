@@ -215,7 +215,8 @@ const call_handler = async function() {
     })
 
     while(!(opcao === '1' || opcao === '2' || opcao === '3')){
-      await this.command('play_and_get_digits', '1 1 1 5000 1 /home/ec2/tembici/IVR_Inicio_0300.wav')
+      opcao = ''
+      await this.command('playback', '/home/ec2/tembici/IVR_Inicio_0300.wav')
     }
     
     if (chamadas_ativas.length > limit) {
