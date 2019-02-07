@@ -38,7 +38,7 @@ const call_handler = async function() {
     await this.command('playback', 'silence_stream://1000')
     await this.command('playback', '/home/ec2/tembici/IVR_4003_sem_auto_atendimento.wav')
 
-    if (chamadas_ativas.length >= limit) {
+    if (chamadas_ativas.length > limit) {
       await this.command('playback', '/home/ec2/tembici/Temibici_Ocupados.wav')
       await this.hangup()
     }else{
