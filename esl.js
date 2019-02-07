@@ -2,7 +2,7 @@ const esl = require('esl')
 
 let chamadas = []
 let chamadas_ativas = []
-let limit = 1
+let limit = 20
 let tempo = 20000
 
 const call_handler = async function() {
@@ -39,13 +39,167 @@ const call_handler = async function() {
     await this.command('playback', '/home/ec2/tembici/IVR_4003_sem_auto_atendimento.wav')
 
     if (chamadas_ativas.length > limit) {
-      await this.command('playback', '/home/ec2/tembici/Temibici_Ocupados.wav')
+      await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
       await this.hangup()
     }else{
       this.command('playback', 'local_stream://default')
       chamadas.push([this, id, from, to])
     }
   }
+
+  if (to === '40030387') {
+    to = `5511${to}`
+    from = `${from}ManoBike`
+
+    await this.command('answer')
+    await this.command('playback', 'silence_stream://1000')
+    await this.command('playback', '/home/ec2/tembici/IVR_4003_sem_auto_atendimento.wav')
+
+    if (chamadas_ativas.length > limit) {
+      await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
+      await this.hangup()
+    }else{
+      this.command('playback', 'local_stream://default')
+      chamadas.push([this, id, from, to])
+    }
+  }
+
+  if (to === '40030391') {
+    to = `5511${to}`
+    from = `${from}Danoninho`
+
+    await this.command('answer')
+    await this.command('playback', 'silence_stream://1000')
+    await this.command('playback', '/home/ec2/tembici/IVR_4003_sem_auto_atendimento.wav')
+
+    if (chamadas_ativas.length > limit) {
+      await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
+      await this.hangup()
+    }else{
+      this.command('playback', 'local_stream://default')
+      chamadas.push([this, id, from, to])
+    }
+  }
+
+  if (to === '40036052') {
+    to = `5511${to}`
+    from = `${from}Bike_POA`
+
+    await this.command('answer')
+    await this.command('playback', 'silence_stream://1000')
+    await this.command('playback', '/home/ec2/tembici/IVR_Poa2018.wav')
+
+    if (chamadas_ativas.length > limit) {
+      await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
+      await this.hangup()
+    }else{
+      this.command('playback', 'local_stream://default')
+      chamadas.push([this, id, from, to])
+    }
+  }
+
+  if (to === '40036054') {
+    to = `5511${to}`
+    from = `${from}Bike_Rio`
+
+    await this.command('answer')
+    await this.command('playback', 'silence_stream://1000')
+    await this.command('playback', '/home/ec2/tembici/IVR_Rio2018.wav')
+
+    if (chamadas_ativas.length > limit) {
+      await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
+      await this.hangup()
+    }else{
+      this.command('playback', 'local_stream://default')
+      chamadas.push([this, id, from, to])
+    }
+  }
+
+  if (to === '40036055') {
+    to = `5511${to}`
+    from = `${from}Bike_Sampa`
+
+    await this.command('answer')
+    await this.command('playback', 'silence_stream://1000')
+
+    if (chamadas_ativas.length > limit) {
+      await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
+      await this.hangup()
+    }else{
+      this.command('playback', 'local_stream://default')
+      chamadas.push([this, id, from, to])
+    }
+  }
+
+  if (to === '40036056') {
+    to = `5511${to}`
+    from = `${from}Bike_PE`
+
+    await this.command('answer')
+    await this.command('playback', 'silence_stream://1000')
+    await this.command('playback', '/home/ec2/tembici/IVR_PE2018.wav')
+
+    if (chamadas_ativas.length > limit) {
+      await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
+      await this.hangup()
+    }else{
+      this.command('playback', 'local_stream://default')
+      chamadas.push([this, id, from, to])
+    }
+  }
+
+  if (to === '40039892') {
+    to = `5511${to}`
+    from = `${from}Bike_Salvador`
+
+    await this.command('answer')
+    await this.command('playback', 'silence_stream://1000')
+    await this.command('playback', '/home/ec2/tembici/IVR_Salvador2018.wav')
+
+    if (chamadas_ativas.length > limit) {
+      await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
+      await this.hangup()
+    }else{
+      this.command('playback', 'local_stream://default')
+      chamadas.push([this, id, from, to])
+    }
+  }
+
+  if (to === '40036053') {
+    to = `5511${to}`
+    from = `${from}VilaVelha`
+
+    await this.command('answer')
+    await this.command('playback', 'silence_stream://1000')
+    await this.command('playback', '/home/ec2/tembici/IVR_VilaVelha2018.wav')
+
+    if (chamadas_ativas.length > limit) {
+      await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
+      await this.hangup()
+    }else{
+      this.command('playback', 'local_stream://default')
+      chamadas.push([this, id, from, to])
+    }
+  }
+
+  if (to === '2420') {
+    to = `550300313${to}`
+    from = `${from}Tembici`
+
+    await this.command('answer')
+    await this.command('playback', 'silence_stream://1000')
+    await this.command('playback', '/home/ec2/tembici/IVR_VilaVelha2018.wav')
+
+    if (chamadas_ativas.length > limit) {
+      await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
+      await this.hangup()
+    }else{
+      this.command('playback', 'local_stream://default')
+      chamadas.push([this, id, from, to])
+    }
+  }
+
+  
 
   /*let opcao = ''
   //console.log('name: ' + this.data['Caller-Caller-ID-Name'])
