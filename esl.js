@@ -11,10 +11,6 @@ const call_handler = async function() {
   let to = this.data['Channel-Destination-Number']
   console.log(`chamada inicou ${id}`)
 
-  await this.command('answer')
-  await this.command('playback', 'silence_stream://5000')
-  await this.hangup()
-
   this.onceAsync('CHANNEL_HANGUP').then(function(){
     let id = this.uuid
     console.log(`chamada terminada ${id}`)
