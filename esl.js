@@ -104,12 +104,21 @@ const call_handler = async function() {
 
     await this.command('answer')
     await this.command('playback', 'silence_stream://1000')
-    await this.command('playback', '/home/ec2/tembici/IVR_Rio2018.wav')
+
+    let opcao = ''
+    this.on('DTMF', call => {
+      opcao += call.body['DTMF-Digit']
+    })
+    await this.command('play_and_get_digits', '1 1 1 5000 1 /home/ec2/tembici/IVR_Rio2018.wav')
 
     if (chamadas_ativas.length > limit) {
       await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
       await this.hangup()
     }else{
+      if(opcao === '1'){
+        to = '551100000005'
+      }
+
       this.command('playback', 'local_stream://default')
       chamadas.push([this, id, from, to])
     }
@@ -137,12 +146,21 @@ const call_handler = async function() {
 
     await this.command('answer')
     await this.command('playback', 'silence_stream://1000')
-    await this.command('playback', '/home/ec2/tembici/IVR_PE2018.wav')
+
+    let opcao = ''
+    this.on('DTMF', call => {
+      opcao += call.body['DTMF-Digit']
+    })
+    await this.command('play_and_get_digits', '1 1 1 5000 1 /home/ec2/tembici/IVR_PE2018.wav')
 
     if (chamadas_ativas.length > limit) {
       await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
       await this.hangup()
     }else{
+      if(opcao === '1'){
+        to = '551100000005'
+      }
+
       this.command('playback', 'local_stream://default')
       chamadas.push([this, id, from, to])
     }
@@ -188,35 +206,37 @@ const call_handler = async function() {
 
     await this.command('answer')
     await this.command('playback', 'silence_stream://1000')
-    await this.command('playback', '/home/ec2/tembici/IVR_VilaVelha2018.wav')
+    
+    let opcao = ''
+    this.on('DTMF', call => {
+      opcao += call.body['DTMF-Digit']
+    })
 
+    while(!(opcao === '1' || opcao === '2' || opcao === '3')){
+      await this.command('play_and_get_digits', '1 1 1 5000 1 /home/ec2/tembici/IVR_Inicio_0300.wav')
+    }
+    
     if (chamadas_ativas.length > limit) {
       await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
       await this.hangup()
     }else{
+      if(opcao === '1'){
+        to = '551100000006'
+      }
+      if(opcao === '3'){
+        to = '551100000007'
+      }
       this.command('playback', 'local_stream://default')
       chamadas.push([this, id, from, to])
     }
   }
 
-  
-
   /*let opcao = ''
-  //console.log('name: ' + this.data['Caller-Caller-ID-Name'])
-  //console.log('number: ' + this.data['Caller-Caller-ID-Number'])
-  //console.log('destination: ' + this.data['Channel-Destination-Number'])
 
   this.on('DTMF', call => {
     opcao += call.body['DTMF-Digit']
   })
 
-  await this.command('answer')
-  await this.command('playback', 'silence_stream://1000')
-  await this.command('playback', '/usr/share/freeswitch/sounds/en/us/callie/digits/8000/11.wav')
-  await this.command('playback', '/usr/share/freeswitch/sounds/en/us/callie/digits/8000/12.wav')
-  await this.command('playback', '/usr/share/freeswitch/sounds/en/us/callie/digits/8000/80.wav')
-
-  opcao = ''
   while(!(opcao === '1' || opcao === '2')){
     if(opcao !== ''){
       // opção inválida
@@ -234,8 +254,6 @@ const call_handler = async function() {
     await this.command('bridge', `sofia/gateway/Tfreeswitch/35880866`)
     await this.hangup()
   }*/
-  
-  
 }
 
 setInterval(async () => {
@@ -246,9 +264,6 @@ setInterval(async () => {
     await conn.command('set', `effective_caller_id_number=${from}`)
     await conn.command('set', `bridge_generate_comfort_noise=true`)
     await conn.command('bridge', `sofia/gateway/gateway_cloud/${to}`)
-      //.then(async () => {
-      //  await conn.hangup()
-      //})
   }
 }, tempo)
 
