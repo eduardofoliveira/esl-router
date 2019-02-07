@@ -7,9 +7,13 @@ let tempo = 20000
 const call_handler = async function() {
 
   let id = this.uuid
-  let from = getHeader(headers, 'Caller-Caller-ID-Number')
-  let to = getHeader(headers, 'Channel-Destination-Number')
+  let from = this.data['Caller-Caller-ID-Number']
+  let to = this.data['Channel-Destination-Number']
   console.log(`chamada inicou ${id}`)
+
+  await this.command('answer')
+  await this.command('playback', 'silence_stream://5000')
+  await this.hangup()
 
   this.onceAsync('CHANNEL_HANGUP').then(function(){
     let id = this.uuid
@@ -93,4 +97,4 @@ setInterval(async () => {
 }, 5000)
 
 const server = esl.server(call_handler)
-server.listen(8087, '0.0.0.0')
+server.listen(8085)
