@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "esl": "^9.0.1",
     "modesl": "^1.2.0"
   },
   "devDependencies": {},
