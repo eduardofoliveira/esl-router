@@ -92,6 +92,9 @@ setInterval(async () => {
     await conn.command('set', `effective_caller_id_number=${from}`)
     await conn.command('set', `bridge_generate_comfort_noise=true`)
     await conn.command('bridge', `sofia/gateway/gateway_cloud/${to}`)
+      .catch(error => {
+        console.log(error)
+      })
     await conn.hangup()
   }
 }, tempo)
