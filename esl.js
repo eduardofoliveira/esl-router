@@ -202,6 +202,16 @@ const call_handler = async function() {
     }
   }
 
+  // Segunda a Sexta
+  //05:00 IVR_0300_2420
+  //09:00 IVR_0300_2420_ibike
+  //18:00 IVR_0300_2420
+  //00:00 IVR_Noturno_Tembici
+
+  // Sabado e Domingo
+  //05:00 IVR_0300_2420
+  //00:00 IVR_Noturno_Tembici
+
   if (to === '2420') {
     to = `550300313${to}`
     from = `${from}Tembici`
