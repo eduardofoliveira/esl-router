@@ -9,9 +9,11 @@ const call_handler = async function() {
   let id = this.uuid
   let from = getHeader(headers, 'Caller-Caller-ID-Number')
   let to = getHeader(headers, 'Channel-Destination-Number')
+  console.log(`chamada inicou ${id}`)
 
   this.onceAsync('CHANNEL_HANGUP').then(function(){
     let id = this.uuid
+    console.log(`chamada terminada ${id}`)
     
     for (let index = 0; index < chamadas.length; index++) {
       if (chamadas[index][1] === id) {
