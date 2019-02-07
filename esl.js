@@ -7,6 +7,8 @@ let tempo = 20000
 
 const call_handler = async function() {
 
+  try {
+
   let id = this.uuid
   let from = this.data['Caller-Caller-ID-Number']
   let to = this.data['Channel-Destination-Number']
@@ -229,6 +231,11 @@ const call_handler = async function() {
       this.command('playback', 'local_stream://default')
       chamadas.push([this, id, from, to])
     }
+  }
+
+  } catch (error) {
+      console.log('Erro')
+      console.log(error)
   }
 
   /*let opcao = ''
