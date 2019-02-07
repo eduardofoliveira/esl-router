@@ -1,6 +1,7 @@
 const esl = require('esl')
 
 let chamadas = []
+let chamadas_ativas = []
 let limit = 1
 let tempo = 20000
 
@@ -10,6 +11,7 @@ const call_handler = async function() {
   let from = this.data['Caller-Caller-ID-Number']
   let to = this.data['Channel-Destination-Number']
   console.log(`chamada inicou ${id}`)
+  chamadas_ativas.push(id)
 
   this.onceAsync('CHANNEL_HANGUP').then(function(){
     let id = this.uuid
@@ -18,6 +20,12 @@ const call_handler = async function() {
     for (let index = 0; index < chamadas.length; index++) {
       if (chamadas[index][1] === id) {
         chamadas.splice(index, 1)
+      }
+    }
+
+    for (let index = 0; index < chamadas_ativas.length; index++) {
+      if (chamadas_ativas[index] === id) {
+        chamadas_ativas.splice(index, 1)
       }
     }
   })
@@ -89,7 +97,8 @@ setInterval(async () => {
 }, tempo)
 
 setInterval(async () => {
-  console.log(`quantidade de chamadas ativas: ${chamadas.length}`)
+  console.log(`quantidade de chamadas ativas: ${chamadas_ativas.length}`)
+  console.log(`quantidade de chamadas na espera: ${chamadas.length}`)
 }, 5000)
 
 const server = esl.server(call_handler)
