@@ -1,8 +1,9 @@
+const modesl = require('modesl')
 const esl = require('esl')
 
 let chamadas = []
 let chamadas_ativas = []
-let limit = 20
+let limit = 25
 let tempo = 20000
 
 const call_handler = async function() {
@@ -15,7 +16,7 @@ const call_handler = async function() {
   console.log(`chamada inicou ${id}`)
   chamadas_ativas.push(id)
 
-  this.onceAsync('CHANNEL_HANGUP').then(function(){
+  /*this.onceAsync('CHANNEL_HANGUP').then(function(){
     let id = this.uuid
     console.log(`chamada terminada ${id}`)
     
@@ -30,7 +31,7 @@ const call_handler = async function() {
         chamadas_ativas.splice(index, 1)
       }
     }
-  })
+  })*/
 
   if (to === '40030374') {
     to = `5511${to}`
@@ -288,3 +289,26 @@ setInterval(async () => {
 
 const server = esl.server(call_handler)
 server.listen(8087)
+
+
+modesl = new esl.Connection('54.232.81.114', 8021, 'ClueCon', function() {
+    conn.events('json', 'all')
+
+    conn.on('esl::event::CHANNEL_HANGUP_COMPLETE::**', (event) => {
+        console.log(event.getHeader('Channel-Call-UUID'))
+        let id = event.getHeader('Channel-Call-UUID')
+        console.log(`chamada terminada ${id}`)
+        
+        for (let index = 0; index < chamadas.length; index++) {
+          if (chamadas[index][1] === id) {
+            chamadas.splice(index, 1)
+          }
+        }
+
+        for (let index = 0; index < chamadas_ativas.length; index++) {
+          if (chamadas_ativas[index] === id) {
+            chamadas_ativas.splice(index, 1)
+          }
+        }
+    })
+})
