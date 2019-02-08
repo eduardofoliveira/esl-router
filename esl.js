@@ -269,10 +269,15 @@ setInterval(async () => {
   if (chamadas.length > 0) {
     let [conn, id, from, to] = chamadas.shift()
 
-    await conn.command('set', `effective_caller_id_name=${from}`)
-    await conn.command('set', `effective_caller_id_number=${from}`)
-    await conn.command('set', `bridge_generate_comfort_noise=true`)
-    await conn.command('bridge', `sofia/gateway/gateway_cloud/${to}`)
+    try {
+      await conn.command('set', `effective_caller_id_name=${from}`)
+      await conn.command('set', `effective_caller_id_number=${from}`)
+      await conn.command('set', `bridge_generate_comfort_noise=true`)
+      await conn.command('bridge', `sofia/gateway/gateway_cloud/${to}`)
+      await conn.hangup()
+    } catch (error) {
+      console.log(error)
+    }
   }
 }, tempo)
 
