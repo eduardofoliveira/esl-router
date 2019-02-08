@@ -294,6 +294,8 @@ server.listen(8087)*/
 conn = new modesl.Connection('54.232.81.114', 8021, 'ClueCon', function() {
   conn.events('json', 'all')
 
+  console.log(conn)
+
   conn.on('esl::event::**::**', (event) => {
     console.log(event)
 
