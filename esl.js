@@ -291,7 +291,7 @@ const server = esl.server(call_handler)
 server.listen(8087)*/
 
 
-conn = new esl.Connection('54.232.81.114', 8021, 'ClueCon', function() {
+conn = new modesl.Connection('54.232.81.114', 8021, 'ClueCon', function() {
   conn.events('json', 'all')
 
   conn.on('esl::event::CHANNEL_HANGUP_COMPLETE::**', (event) => {
