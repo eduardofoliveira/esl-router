@@ -2,7 +2,7 @@ const esl = require('esl')
 
 let chamadas = []
 let chamadas_ativas = []
-let limit = 25
+let limit = 18
 let tempo = 20000
 
 const call_handler = async function() {
