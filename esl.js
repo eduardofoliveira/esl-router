@@ -295,7 +295,9 @@ conn = new modesl.Connection('54.232.81.114', 8021, 'ClueCon', function() {
   conn.events('json', 'all')
 
   conn.on('esl::event::CHANNEL_HANGUP_COMPLETE::**', (event) => {
-        console.log(event.getHeader('Channel-Call-UUID'))
+    console.log(event)
+
+        /*console.log(event.getHeader('Channel-Call-UUID'))
         let id = event.getHeader('Channel-Call-UUID')
         console.log(`chamada terminada ${id}`)
         
@@ -309,6 +311,6 @@ conn = new modesl.Connection('54.232.81.114', 8021, 'ClueCon', function() {
           if (chamadas_ativas[index] === id) {
             chamadas_ativas.splice(index, 1)
           }
-        }
+        }*/
     })
 })
