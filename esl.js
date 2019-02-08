@@ -292,9 +292,9 @@ server.listen(8087)
 
 
 modesl = new esl.Connection('54.232.81.114', 8021, 'ClueCon', function() {
-    conn.events('json', 'all')
+  modesl.events('json', 'all')
 
-    conn.on('esl::event::CHANNEL_HANGUP_COMPLETE::**', (event) => {
+  modesl.on('esl::event::CHANNEL_HANGUP_COMPLETE::**', (event) => {
         console.log(event.getHeader('Channel-Call-UUID'))
         let id = event.getHeader('Channel-Call-UUID')
         console.log(`chamada terminada ${id}`)
