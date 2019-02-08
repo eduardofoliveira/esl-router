@@ -1,5 +1,5 @@
 const modesl = require('modesl')
-const esl = require('esl')
+/*const esl = require('esl')
 
 let chamadas = []
 let chamadas_ativas = []
@@ -16,22 +16,22 @@ const call_handler = async function() {
   console.log(`chamada inicou ${id}`)
   chamadas_ativas.push(id)
 
-  /*this.onceAsync('CHANNEL_HANGUP').then(function(){
-    let id = this.uuid
-    console.log(`chamada terminada ${id}`)
-    
-    for (let index = 0; index < chamadas.length; index++) {
-      if (chamadas[index][1] === id) {
-        chamadas.splice(index, 1)
-      }
-    }
-
-    for (let index = 0; index < chamadas_ativas.length; index++) {
-      if (chamadas_ativas[index] === id) {
-        chamadas_ativas.splice(index, 1)
-      }
-    }
-  })*/
+  //this.onceAsync('CHANNEL_HANGUP').then(function(){
+  //  let id = this.uuid
+  //  console.log(`chamada terminada ${id}`)
+  //  
+  //  for (let index = 0; index < chamadas.length; index++) {
+  //    if (chamadas[index][1] === id) {
+  //      chamadas.splice(index, 1)
+  //    }
+  //  }
+  //
+  //  for (let index = 0; index < chamadas_ativas.length; index++) {
+  //    if (chamadas_ativas[index] === id) {
+  //      chamadas_ativas.splice(index, 1)
+  //    }
+  //  }
+  //})
 
   if (to === '40030374') {
     to = `5511${to}`
@@ -241,29 +241,29 @@ const call_handler = async function() {
       console.log(error)
   }
 
-  /*let opcao = ''
+  //let opcao = ''
 
-  this.on('DTMF', call => {
-    opcao += call.body['DTMF-Digit']
-  })
+  //this.on('DTMF', call => {
+  //  opcao += call.body['DTMF-Digit']
+  //})
 
-  while(!(opcao === '1' || opcao === '2')){
-    if(opcao !== ''){
-      // opção inválida
-      //await this.command('playback', '/usr/share/freeswitch/sounds/en/us/callie/ivr/8000/ivr-pin_or_extension_is-invalid.wav')
-    }
-    opcao = ''
-    await this.command('play_and_get_digits', '1 1 1 3000 1 local_stream://moh')
-  }
+  //while(!(opcao === '1' || opcao === '2')){
+  //  if(opcao !== ''){
+  //    // opção inválida
+  //    //await this.command('playback', '/usr/share/freeswitch/sounds/en/us/callie/ivr/8000/ivr-pin_or_extension_is-invalid.wav')
+  //  }
+  //  opcao = ''
+  //  await this.command('play_and_get_digits', '1 1 1 3000 1 local_stream://moh')
+  //}
   
-  if(opcao === '1'){
-    await this.command('bridge', `sofia/gateway/Tfreeswitch/37115000`)
-    await this.hangup()
-  }
-  if(opcao === '2'){
-    await this.command('bridge', `sofia/gateway/Tfreeswitch/35880866`)
-    await this.hangup()
-  }*/
+  //if(opcao === '1'){
+  //  await this.command('bridge', `sofia/gateway/Tfreeswitch/37115000`)
+  //  await this.hangup()
+  //}
+  //if(opcao === '2'){
+  //  await this.command('bridge', `sofia/gateway/Tfreeswitch/35880866`)
+  //  await this.hangup()
+  //}
 }
 
 setInterval(async () => {
@@ -288,13 +288,13 @@ setInterval(async () => {
 }, 5000)
 
 const server = esl.server(call_handler)
-server.listen(8087)
+server.listen(8087)*/
 
 
-modesl = new esl.Connection('54.232.81.114', 8021, 'ClueCon', function() {
-  modesl.events('json', 'all')
+conn = new esl.Connection('54.232.81.114', 8021, 'ClueCon', function() {
+  conn.events('json', 'all')
 
-  modesl.on('esl::event::CHANNEL_HANGUP_COMPLETE::**', (event) => {
+  conn.on('esl::event::CHANNEL_HANGUP_COMPLETE::**', (event) => {
         console.log(event.getHeader('Channel-Call-UUID'))
         let id = event.getHeader('Channel-Call-UUID')
         console.log(`chamada terminada ${id}`)
