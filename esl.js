@@ -184,7 +184,6 @@ const call_handler = async function() {
       }
     }
 
-<<<<<<< HEAD
   // Segunda a Sexta
   //05:00 IVR_0300_2420
   //09:00 IVR_0300_2420_ibike
@@ -194,28 +193,6 @@ const call_handler = async function() {
   // Sabado e Domingo
   //05:00 IVR_0300_2420
   //00:00 IVR_Noturno_Tembici
-
-  if (to === '2420') {
-    to = `550300313${to}`
-    from = `${from}Tembici`
-=======
-    if (to === '40036053') {
-      to = `5511${to}`
-      from = `${from}VilaVelha`
->>>>>>> 2482ae9918e5b72a45b4ed5054312ca818b9963f
-
-      await this.command('answer')
-      await this.command('playback', 'silence_stream://1000')
-      await this.command('playback', '/home/ec2/tembici/IVR_VilaVelha2018.wav')
-
-      if (chamadas_ativas.length > limit) {
-        await this.command('playback', '/home/ec2/tembici/Tembici_Ocupados.wav')
-        await this.hangup()
-      }else{
-        this.command('playback', 'local_stream://default')
-        chamadas.push([this, id, from, to])
-      }
-    }
 
     if (to === '2420') {
       to = `550300313${to}`
