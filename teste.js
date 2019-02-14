@@ -1,21 +1,7 @@
-async function getSomeValue() {
-  if (true) {
-    throw new Error('uh oh');
-  } else {
-    return 'Yay!';
-  }
-}
+let chamadas_na_espera = []
+let chamadas_no_basix = []
+let limit = 18
 
-async function funcao() {
-  try {
-    // "await" will wait for the promise to resolve or reject
-    // if it rejects, an error will be thrown, which you can
-    // catch with a regular try/catch block
-    const someValue = await getSomeValue();
-    doSomethingWith(someValue);
-  } catch (error) {
-    console.error(error);
-  }
+if (chamadas_na_espera.length > 0 && chamadas_no_basix < limit) {
+  console.log('Direcionou para o Basix')
 }
-
-funcao()

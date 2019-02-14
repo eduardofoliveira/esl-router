@@ -253,8 +253,8 @@ const call_handler = async function() {
 }
 
 setInterval(async () => {
-  console.log(chamadas_na_espera.length > 0 && chamadas_no_basix < limit)
-  if (chamadas_na_espera.length > 0 && chamadas_no_basix < limit) {
+  console.log(chamadas_na_espera.length > 0 && chamadas_no_basix.length < limit)
+  if (chamadas_na_espera.length > 0 && chamadas_no_basix.length < limit) {
     let [conn, id, from, to] = chamadas_na_espera.shift()
 
     try {
