@@ -511,7 +511,7 @@ setInterval(async () => {
 
     for (let a = 0; a < eventos[i].status.length; a++) {
       if(eventos[i].status[a].state === 'HANGUP'){
-        fs.write(JSON.stringify(eventos[i]))
+        saida.write(JSON.stringify(eventos[i]))
         eventos.splice(i, 1)
       }
     }
