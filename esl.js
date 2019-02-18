@@ -30,13 +30,15 @@ const call_handler = async function() {
   let id = this.uuid
   let from = this.data['Caller-Caller-ID-Number']
   let to = this.data['Channel-Destination-Number']
+  let status = []
+  status.push({
+    state: 'IDLE',
+    horario: Date.now
+  })
 
   eventos.push({
     id,
-    status = [{
-      state: 'IDLE',
-      horario: Date.now
-    }],
+    status,
     from,
     to
   })
