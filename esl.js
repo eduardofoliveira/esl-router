@@ -33,7 +33,7 @@ const call_handler = async function() {
   let status = []
   status.push({
     state: 'IDLE',
-    horario: Date.now
+    horario: Date.now()
   })
 
   eventos.push({
@@ -48,7 +48,7 @@ const call_handler = async function() {
       let id = this.uuid
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'HANGUP',
             horario: Date.now
           }])
@@ -87,7 +87,7 @@ const call_handler = async function() {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'URA',
             horario: Date.now
           }])
@@ -103,7 +103,7 @@ const call_handler = async function() {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'QUEUE',
             horario: Date.now
           }])
@@ -117,7 +117,7 @@ const call_handler = async function() {
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'URA',
             horario: Date.now
           }])
@@ -133,7 +133,7 @@ const call_handler = async function() {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'QUEUE',
             horario: Date.now
           }])
@@ -147,7 +147,7 @@ const call_handler = async function() {
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'URA',
             horario: Date.now
           }])
@@ -163,7 +163,7 @@ const call_handler = async function() {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'QUEUE',
             horario: Date.now
           }])
@@ -177,7 +177,7 @@ const call_handler = async function() {
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'URA',
             horario: Date.now
           }])
@@ -193,7 +193,7 @@ const call_handler = async function() {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'QUEUE',
             horario: Date.now
           }])
@@ -207,7 +207,7 @@ const call_handler = async function() {
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'URA',
             horario: Date.now
           }])
@@ -233,7 +233,7 @@ const call_handler = async function() {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'QUEUE',
             horario: Date.now
           }])
@@ -247,7 +247,7 @@ const call_handler = async function() {
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'URA',
             horario: Date.now
           }])
@@ -262,7 +262,7 @@ const call_handler = async function() {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'QUEUE',
             horario: Date.now
           }])
@@ -276,7 +276,7 @@ const call_handler = async function() {
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'URA',
             horario: Date.now
           }])
@@ -302,7 +302,7 @@ const call_handler = async function() {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'QUEUE',
             horario: Date.now
           }])
@@ -316,7 +316,7 @@ const call_handler = async function() {
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'URA',
             horario: Date.now
           }])
@@ -332,7 +332,7 @@ const call_handler = async function() {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'QUEUE',
             horario: Date.now
           }])
@@ -356,7 +356,7 @@ const call_handler = async function() {
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'URA',
             horario: Date.now
           }])
@@ -389,7 +389,7 @@ const call_handler = async function() {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'QUEUE',
             horario: Date.now
           }])
@@ -402,7 +402,7 @@ const call_handler = async function() {
 
     for (let index = 0; index < eventos.length; index++) {
       if (eventos[index][0] === id) {
-        eventos[index][1].push([{
+        eventos[index].status.push([{
           state: 'HANGUP',
           horario: Date.now
         }])
@@ -448,7 +448,7 @@ setInterval(async () => {
 
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'CALLCENTER',
             horario: Date.now
           }])
@@ -462,7 +462,7 @@ setInterval(async () => {
       
       for (let index = 0; index < eventos.length; index++) {
         if (eventos[index][0] === id) {
-          eventos[index][1].push([{
+          eventos[index].status.push([{
             state: 'HANGUP',
             horario: Date.now
           }])
