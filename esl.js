@@ -1,5 +1,7 @@
 const moment = require('moment')
 const esl = require('esl')
+const fs = require('fs')
+const saida = fs.createWriteStream('./relatorio-tembici.txt', {flags:'a'})
 
 let chamadas_ativas = []
 let chamadas_na_ura = []
@@ -497,27 +499,22 @@ setInterval(async () => {
   }
 }, tempo)
 
-/*setInterval(async () => {
+setInterval(async () => {
   console.log(`Chamadas ativas: ${chamadas_ativas.length}`)
   console.log(`Chamadas na ura: ${chamadas_na_ura.length}`)
   console.log(`Chamadas na espera: ${chamadas_na_espera.length}`)
   console.log(`Chamadas no basix: ${chamadas_no_basix.length}`)
-}, 5000)*/
+}, 5000)
 
 setInterval(async () => {
   for (let i = 0; i < eventos.length; i++) {
-    console.log(eventos[i].status)
-    console.log(eventos[i].status[0])
 
-    /*for (let a = 0; a < eventos[i].status.length; a++) {
+    for (let a = 0; a < eventos[i].status.length; a++) {
       if(eventos[i].status[a].state === 'HANGUP'){
-        console.log('Chamada Terminada:')
-        console.log(`De: ${eventos[i].from}`)
-        console.log(`Para: ${eventos[i].to}`)
-        console.log(eventos[i])
-        console.log('')
+        fs.write(JSON.stringify(eventos[i]))
+        eventos.splice(i, 1)
       }
-    }*/
+    }
   }
 }, 60000)
 
