@@ -505,6 +505,8 @@ setInterval(async () => {
 
 setInterval(async () => {
   for (let i = 0; i < eventos.length; i++) {
+    console.log(eventos[i].status)
+
     for (let a = 0; a < eventos[i].status.length; a++) {
       if(eventos[i].status[a].state === 'HANGUP'){
         console.log('Chamada Terminada:')
