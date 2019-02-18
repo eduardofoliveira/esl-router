@@ -1,3 +1,4 @@
+const moment = require('moment')
 const esl = require('esl')
 
 let chamadas_ativas = []
@@ -33,7 +34,7 @@ const call_handler = async function() {
   let status = []
   status.push({
     state: 'IDLE',
-    horario: Date.now().toLocaleString()
+    horario: moment().format('DD-MM-YYYY HH:mm:ss')
   })
 
   eventos.push({
@@ -50,7 +51,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'HANGUP',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -89,7 +90,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -105,7 +106,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -119,7 +120,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -135,7 +136,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -149,7 +150,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -165,7 +166,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -179,7 +180,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -195,7 +196,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -209,7 +210,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -235,7 +236,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -249,7 +250,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -264,7 +265,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -278,7 +279,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -304,7 +305,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -318,7 +319,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -334,7 +335,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -358,7 +359,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -391,7 +392,7 @@ const call_handler = async function() {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -404,7 +405,7 @@ const call_handler = async function() {
       if (eventos[index].id === id) {
         eventos[index].status.push({
           state: 'HANGUP',
-          horario: Date.now().toLocaleString()
+          horario: moment().format('DD-MM-YYYY HH:mm:ss')
         })
       }
     }
@@ -450,7 +451,7 @@ setInterval(async () => {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'CALLCENTER',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }
@@ -464,7 +465,7 @@ setInterval(async () => {
         if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'HANGUP',
-            horario: Date.now().toLocaleString()
+            horario: moment().format('DD-MM-YYYY HH:mm:ss')
           })
         }
       }

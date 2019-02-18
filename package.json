@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "esl": "^9.0.1",
-    "modesl": "^1.2.0"
+    "modesl": "^1.2.0",
+    "moment": "^2.24.0"
   },
   "devDependencies": {},
   "scripts": {
