@@ -47,7 +47,7 @@ const call_handler = async function() {
     this.onceAsync('CHANNEL_HANGUP').then(function(){
       let id = this.uuid
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'HANGUP',
             horario: Date.now()
@@ -86,7 +86,7 @@ const call_handler = async function() {
       chamadas_na_ura.push(id)
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
             horario: Date.now()
@@ -102,7 +102,7 @@ const call_handler = async function() {
       chamadas_na_espera.push([this, id, from, to])
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
             horario: Date.now()
@@ -116,7 +116,7 @@ const call_handler = async function() {
       from = `${from}ManoBike`
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
             horario: Date.now()
@@ -132,7 +132,7 @@ const call_handler = async function() {
       chamadas_na_espera.push([this, id, from, to])
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
             horario: Date.now()
@@ -146,7 +146,7 @@ const call_handler = async function() {
       from = `${from}Danoninho`
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
             horario: Date.now()
@@ -162,7 +162,7 @@ const call_handler = async function() {
       chamadas_na_espera.push([this, id, from, to])
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
             horario: Date.now()
@@ -176,7 +176,7 @@ const call_handler = async function() {
       from = `${from}Bike_POA`
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
             horario: Date.now()
@@ -192,7 +192,7 @@ const call_handler = async function() {
       chamadas_na_espera.push([this, id, from, to])
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
             horario: Date.now()
@@ -206,7 +206,7 @@ const call_handler = async function() {
       from = `${from}Bike_Rio`
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
             horario: Date.now()
@@ -232,7 +232,7 @@ const call_handler = async function() {
       chamadas_na_espera.push([this, id, from, to])
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
             horario: Date.now()
@@ -246,7 +246,7 @@ const call_handler = async function() {
       from = `${from}Bike_Sampa`
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
             horario: Date.now()
@@ -261,7 +261,7 @@ const call_handler = async function() {
       chamadas_na_espera.push([this, id, from, to])
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
             horario: Date.now()
@@ -275,7 +275,7 @@ const call_handler = async function() {
       from = `${from}Bike_PE`
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
             horario: Date.now()
@@ -301,7 +301,7 @@ const call_handler = async function() {
       chamadas_na_espera.push([this, id, from, to])
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
             horario: Date.now()
@@ -315,7 +315,7 @@ const call_handler = async function() {
       from = `${from}Bike_Salvador`
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
             horario: Date.now()
@@ -331,7 +331,7 @@ const call_handler = async function() {
       chamadas_na_espera.push([this, id, from, to])
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
             horario: Date.now()
@@ -355,7 +355,7 @@ const call_handler = async function() {
       from = `${from}Tembici`
       chamadas_na_ura.push(id)
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'URA',
             horario: Date.now()
@@ -388,7 +388,7 @@ const call_handler = async function() {
       chamadas_na_espera.push([this, id, from, to])
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'QUEUE',
             horario: Date.now()
@@ -401,7 +401,7 @@ const call_handler = async function() {
     console.log(`chamada terminada ${id}`)
 
     for (let index = 0; index < eventos.length; index++) {
-      if (eventos[index][0] === id) {
+      if (eventos[index].id === id) {
         eventos[index].status.push({
           state: 'HANGUP',
           horario: Date.now()
@@ -447,7 +447,7 @@ setInterval(async () => {
       chamadas_no_basix.push(id)
 
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'CALLCENTER',
             horario: Date.now()
@@ -461,7 +461,7 @@ setInterval(async () => {
       console.log(`chamada terminada ${id}`)
       
       for (let index = 0; index < eventos.length; index++) {
-        if (eventos[index][0] === id) {
+        if (eventos[index].id === id) {
           eventos[index].status.push({
             state: 'HANGUP',
             horario: Date.now()
@@ -505,7 +505,7 @@ setInterval(async () => {
 
 setInterval(async () => {
   for (let i = 0; i < eventos.length; i++) {
-    console.log(eventos[i].status)
+    console.log(eventos[i])
 
     for (let a = 0; a < eventos[i].status.length; a++) {
       if(eventos[i].status[a].state === 'HANGUP'){
