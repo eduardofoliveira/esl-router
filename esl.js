@@ -4,8 +4,9 @@ let chamadas_ativas = []
 let chamadas_na_ura = []
 let chamadas_na_espera = []
 let chamadas_no_basix = []
+let eventos = []
 
-let limit = 18
+let limit = 16
 let tempo = 20000
 
 const removerListaUra = (id) => {
@@ -29,11 +30,28 @@ const call_handler = async function() {
   let id = this.uuid
   let from = this.data['Caller-Caller-ID-Number']
   let to = this.data['Channel-Destination-Number']
-  chamadas_ativas.push(id)
+
+  eventos.push({
+    id,
+    status = [{
+      state: 'IDLE',
+      horario: Date.now
+    }],
+    from,
+    to
+  })
 
   try {
     this.onceAsync('CHANNEL_HANGUP').then(function(){
       let id = this.uuid
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'HANGUP',
+            horario: Date.now
+          }])
+        }
+      }
     
       for (let index = 0; index < chamadas_ativas.length; index++) {
         if (chamadas_ativas[index] === id) {
@@ -64,6 +82,15 @@ const call_handler = async function() {
       to = `5511${to}`
       from = `${from}Bike_Belem`
       chamadas_na_ura.push(id)
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'URA',
+            horario: Date.now
+          }])
+        }
+      }
 
       await this.command('answer')
       await this.command('playback', 'silence_stream://1000')
@@ -71,12 +98,29 @@ const call_handler = async function() {
       this.command('playback', 'local_stream://default')
       removerListaUra(id)
       chamadas_na_espera.push([this, id, from, to])
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'QUEUE',
+            horario: Date.now
+          }])
+        }
+      }
     }
 
     if (to === '40030387') {
       to = `5511${to}`
       from = `${from}ManoBike`
       chamadas_na_ura.push(id)
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'URA',
+            horario: Date.now
+          }])
+        }
+      }
 
       await this.command('answer')
       await this.command('playback', 'silence_stream://1000')
@@ -84,12 +128,29 @@ const call_handler = async function() {
       this.command('playback', 'local_stream://default')
       removerListaUra(id)
       chamadas_na_espera.push([this, id, from, to])
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'QUEUE',
+            horario: Date.now
+          }])
+        }
+      }
     }
 
     if (to === '40030391') {
       to = `5511${to}`
       from = `${from}Danoninho`
       chamadas_na_ura.push(id)
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'URA',
+            horario: Date.now
+          }])
+        }
+      }
 
       await this.command('answer')
       await this.command('playback', 'silence_stream://1000')
@@ -97,12 +158,29 @@ const call_handler = async function() {
       this.command('playback', 'local_stream://default')
       removerListaUra(id)
       chamadas_na_espera.push([this, id, from, to])
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'QUEUE',
+            horario: Date.now
+          }])
+        }
+      }
     }
 
     if (to === '40036052') {
       to = `5511${to}`
       from = `${from}Bike_POA`
       chamadas_na_ura.push(id)
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'URA',
+            horario: Date.now
+          }])
+        }
+      }
 
       await this.command('answer')
       await this.command('playback', 'silence_stream://1000')
@@ -110,12 +188,29 @@ const call_handler = async function() {
       this.command('playback', 'local_stream://default')
       removerListaUra(id)
       chamadas_na_espera.push([this, id, from, to])
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'QUEUE',
+            horario: Date.now
+          }])
+        }
+      }
     }
 
     if (to === '40036054') {
       to = `5511${to}`
       from = `${from}Bike_Rio`
       chamadas_na_ura.push(id)
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'URA',
+            horario: Date.now
+          }])
+        }
+      }
 
       await this.command('answer')
       await this.command('playback', 'silence_stream://1000')
@@ -133,24 +228,58 @@ const call_handler = async function() {
       this.command('playback', 'local_stream://default')
       removerListaUra(id)
       chamadas_na_espera.push([this, id, from, to])
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'QUEUE',
+            horario: Date.now
+          }])
+        }
+      }
     }
 
     if (to === '40036055') {
       to = `5511${to}`
       from = `${from}Bike_Sampa`
       chamadas_na_ura.push(id)
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'URA',
+            horario: Date.now
+          }])
+        }
+      }
 
       await this.command('answer')
       await this.command('playback', 'silence_stream://1000')
       this.command('playback', 'local_stream://default')
       removerListaUra(id)
       chamadas_na_espera.push([this, id, from, to])
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'QUEUE',
+            horario: Date.now
+          }])
+        }
+      }
     }
 
     if (to === '40036056') {
       to = `5511${to}`
       from = `${from}Bike_PE`
       chamadas_na_ura.push(id)
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'URA',
+            horario: Date.now
+          }])
+        }
+      }
 
       await this.command('answer')
       await this.command('playback', 'silence_stream://1000')
@@ -168,12 +297,29 @@ const call_handler = async function() {
       this.command('playback', 'local_stream://default')
       removerListaUra(id)
       chamadas_na_espera.push([this, id, from, to])
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'QUEUE',
+            horario: Date.now
+          }])
+        }
+      }
     }
 
     if (to === '40039892') {
       to = `5511${to}`
       from = `${from}Bike_Salvador`
       chamadas_na_ura.push(id)
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'URA',
+            horario: Date.now
+          }])
+        }
+      }
 
       await this.command('answer')
       await this.command('playback', 'silence_stream://1000')
@@ -181,6 +327,15 @@ const call_handler = async function() {
       this.command('playback', 'local_stream://default')
       removerListaUra(id)
       chamadas_na_espera.push([this, id, from, to])
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'QUEUE',
+            horario: Date.now
+          }])
+        }
+      }
     }
 
     // Segunda a Sexta
@@ -197,6 +352,14 @@ const call_handler = async function() {
       to = `550300313${to}`
       from = `${from}Tembici`
       chamadas_na_ura.push(id)
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'URA',
+            horario: Date.now
+          }])
+        }
+      }
 
       await this.command('answer')
       await this.command('playback', 'silence_stream://1000')
@@ -221,10 +384,28 @@ const call_handler = async function() {
       this.command('playback', 'local_stream://default')
       removerListaUra(id)
       chamadas_na_espera.push([this, id, from, to])
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'QUEUE',
+            horario: Date.now
+          }])
+        }
+      }
     }
 
   } catch (error) {
     console.log(`chamada terminada ${id}`)
+
+    for (let index = 0; index < eventos.length; index++) {
+      if (eventos[index][0] === id) {
+        eventos[index][1].push([{
+          state: 'HANGUP',
+          horario: Date.now
+        }])
+      }
+    }
     
     for (let index = 0; index < chamadas_ativas.length; index++) {
       if (chamadas_ativas[index] === id) {
@@ -263,10 +444,29 @@ setInterval(async () => {
       await conn.command('set', `bridge_generate_comfort_noise=true`)
       removerListaEspera(id)
       chamadas_no_basix.push(id)
+
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'CALLCENTER',
+            horario: Date.now
+          }])
+        }
+      }
+      
       await conn.command('bridge', `sofia/gateway/gateway_cloud/${to}`)
       await conn.hangup()
     } catch (error) {
       console.log(`chamada terminada ${id}`)
+      
+      for (let index = 0; index < eventos.length; index++) {
+        if (eventos[index][0] === id) {
+          eventos[index][1].push([{
+            state: 'HANGUP',
+            horario: Date.now
+          }])
+        }
+      }
       
       for (let index = 0; index < chamadas_ativas.length; index++) {
         if (chamadas_ativas[index] === id) {
@@ -295,12 +495,26 @@ setInterval(async () => {
   }
 }, tempo)
 
-setInterval(async () => {
+/*setInterval(async () => {
   console.log(`Chamadas ativas: ${chamadas_ativas.length}`)
   console.log(`Chamadas na ura: ${chamadas_na_ura.length}`)
   console.log(`Chamadas na espera: ${chamadas_na_espera.length}`)
   console.log(`Chamadas no basix: ${chamadas_no_basix.length}`)
-}, 5000)
+}, 5000)*/
+
+setInterval(async () => {
+  for (let i = 0; i < eventos.length; i++) {
+    for (let a = 0; a < eventos[index].status.length; a++) {
+      if(eventos[index].status[a].state === 'HANGUP'){
+        console.log('Chamada Terminada:')
+        console.log(`De: ${eventos[index].from}`)
+        console.log(`Para: ${eventos[index].to}`)
+        console.log(eventos[index])
+        console.log('')
+      }
+    }
+  }
+}, 60000)
 
 const server = esl.server(call_handler)
 server.listen(8087)
