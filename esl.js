@@ -383,7 +383,20 @@ const call_handler = async function() {
 
       await this.command("answer")
       await this.command("playback", "silence_stream://1000")
-      await this.command("playback", "/home/ec2/tembici/IVR_VilaVelha2018.wav")
+
+      let opcao = ""
+      this.on("DTMF", call => {
+        opcao += call.body["DTMF-Digit"]
+      })
+      await this.command(
+        "play_and_get_digits",
+        "1 1 1 5000 1 /home/ec2/tembici/IVR_VilaVelha2018.wav"
+      )
+
+      if (opcao === "1") {
+        to = "551100000005"
+      }
+
       this.command("playback", "local_stream://default")
       removerListaUra(id)
       chamadas_na_espera.push([this, id, from, to])
