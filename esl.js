@@ -432,8 +432,8 @@ const call_handler = async function() {
         opcao += call.body["DTMF-Digit"]
       })
 
-      console.log(!(opcao === "1" || opcao === "3"))
-      while (!(opcao === "1" || opcao === "3")) {
+      console.log(!(opcao === "1" || opcao === "2" || opcao === "3"))
+      while (!(opcao === "1" || opcao === "2" || opcao === "3")) {
         opcao = ""
         await this.command(
           "play_and_get_digits",
