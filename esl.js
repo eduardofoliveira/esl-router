@@ -345,11 +345,11 @@ const call_handler = async function() {
 
       await this.command("answer");
       await this.command("playback", "silence_stream://1000");
-      //await this.command("playback", "/home/ec2/tembici/IVR_Salvador2018.wav")
-      await this.command(
-        "playback",
-        "/home/ec2/tembici/Carnaval_BikeSalvador.wav"
-      );
+      await this.command("playback", "/home/ec2/tembici/IVR_Salvador2018.wav");
+      // await this.command(
+      //   "playback",
+      //   "/home/ec2/tembici/Carnaval_BikeSalvador.wav"
+      // );
       this.command("playback", "local_stream://default");
       removerListaUra(id);
       chamadas_na_espera.push([this, id, from, to]);
